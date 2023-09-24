@@ -86,6 +86,9 @@ This API allows you to extract text data from a video using a provided API key a
 - `401 Unauthorized`: The provided API key is invalid or missing. You need a valid API key for access.
 - `500 Internal Server Error`: An error occurred during processing. This could be due to various reasons, such as video download failures or other unexpected errors.
 
+## Responses Time
+
+- for `72 Second` long video it took `2 mins`. 
 
 ## Contributing
 Contributions are welcome! If you have suggestions, improvements, or bug fixes, please create an issue or a pull request.
