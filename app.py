@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, send_file
+from flask import Flask, render_template, request, redirect, send_file, jsonify
 from pytube import YouTube
 import os
 import re
@@ -215,8 +215,73 @@ def generate_word_cloud(text):
     plt.tight_layout()
     plt.savefig("static/wordcloud.png")  # Save the word cloud as an image
 
+# --------------- API ---------------  
 
+# Define a secret API key
+API_KEY = "api123"
 
+# http://127.0.0.1:5000/apiVideo2Text?api_key=api123&url=some_url_here
+
+# /apiVideo2Text?api_key=api123&url=https://www.youtube.com/watch?v=teV8QWAOQu4
+# /apiVideo2Text?api_key=api123&url=https://www.youtube.com/watch?v=ankpGxGh8cA
+
+@app.route("/apiVideo2Text", methods=["GET"])
+def api_video_to_text():
+    # Get the API key and URL from the query parameters
+    api_key = request.args.get("api_key")
+    youtube_url = request.args.get("url")
+
+    try:
+        # Check if the API key is valid
+        if api_key != API_KEY:
+            return "Invalid API key", 401  # Unauthorized
+
+        yt = YouTube(youtube_url)
+        stream = yt.streams.get_highest_resolution()
+        stream.download(filename="static/downloads/sampleVideo.mp4")
+
+        # Check if the video was downloaded successfully
+        if not os.path.exists("static/downloads/sampleVideo.mp4"):
+            return "Video download failed", 500  # Internal Server Error
+
+        largeText = video_2_text("static/downloads/sampleVideo.mp4")  # convert video to text
+        summarize = largetext_2_summarize(largeText)  # summarize the large text
+
+        # Return a JSON response
+        response_data = {
+            "title": yt.title,
+            "author": yt.author,
+            "length": yt.length,
+            "views": yt.views,
+            "url": youtube_url,
+            "summarized_text": summarize,
+            "Raw_text": largeText
+        }
+
+        return jsonify(response_data), 200
+
+    except Exception as e:
+        # Handle exceptions and provide an error response
+        error_message = str(e)
+        return f"Error: {error_message}", 500  # Internal Server Error
+
+'''
+
+API Response
+
+API (GET Request): http://127.0.0.1:5000/apiVideo2Text?api_key=api123&url=https://www.youtube.com/watch?v=ankpGxGh8cA
+
+{
+"Raw_text": "hello this time we got pronunciation yes let's pronounce these words together we got three sounds to pronounce the letter S at the end of the plural nouns now let's listen to them and repeat the words tape script 1.14 pronunciation books students cause computers hamburgers Cambridge televisions bags phones some images houses buses wait for more units more lessons for the beginners English level and more levels coming soon thank you ",
+"author": "TEFLship",
+"length": 72,
+"summarized_text": "14 pronunciation books students cause computers hamburgers Cambridge televisions bags phones some images houses buses wait for more units more lessons for the beginners English level an an English for adults level 1 and 2. 1. Pronunciation books: 1. The sound of the letter S at the end of the plural nouns now let's listen to them and repeat the words. 2. The sounds of the letters A, E, and F at the beginning of the nouns.\nMore levels coming soon thank you. d more levels comingSoon.    d more level coming soon. Thank you for your support and support.  D more levels  coming soon thanks for support. d  more levelsComing soon.  More levels coming Soon.",
+"title": "Unit 1- Lesson 7 - How To Pronounce the S in Plural Nouns - Pronunciation - Beginners Level",
+"url": "https://www.youtube.com/watch?v=ankpGxGh8cA",
+"views": 334
+}
+
+'''
 
 
 if __name__ == "__main__":
