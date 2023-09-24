@@ -3,9 +3,9 @@ VideoSynopsi is a NLP subject mini project for Fr CRCE - BE Sem - 7
 
 ## Team
 ```
-    - Hitest Sharma
-    - Aditya Vyas
-    - Atharva Pawar
+    - Hitest Sharma (Back-END :  Video to Text Conversion)
+    - Aditya Vyas   (Back-END :  Research & LLM for summarization)
+    - Atharva Pawar (Front-END:  Flask Api & Web-App)
 ```
 
 This project is designed for text summarization of YouTube videos. It leverages the capabilities of the SpeechRecognition, moviepy, pydub, and pytube libraries for efficient text analysis and processing. The summarization algorithm employed in this project effectively extracts key sentences from the input text, resulting in a concise and informative summary of the video's content.
