@@ -1,6 +1,12 @@
 # VideoSynopsi
 VideoSynopsi is a NLP subject mini project for Fr CRCE - BE Sem - 7
 
+## Team
+```
+    - Hitest Sharma
+    - Aditya Vyas
+    - Atharva Pawar
+```
 
 This project is designed for text summarization of YouTube videos. It leverages the capabilities of the SpeechRecognition, moviepy, pydub, and pytube libraries for efficient text analysis and processing. The summarization algorithm employed in this project effectively extracts key sentences from the input text, resulting in a concise and informative summary of the video's content.
 
@@ -89,6 +95,7 @@ This API allows you to extract text data from a video using a provided API key a
 ## Responses Time
 
 - for `72 Second` long video it took `2 mins`. 
+
 
 ## Contributing
 Contributions are welcome! If you have suggestions, improvements, or bug fixes, please create an issue or a pull request.
