@@ -18,16 +18,17 @@ This project is designed for text summarization of YouTube videos. It leverages 
     ```bash
     pip install -r requirements.txt
 
-    OR 
+    #OR 
 
     # pip install cmd 
     pip install SpeechRecognition moviepy pydub pytube
 
 ## Usage
-Video to Text Summarization
+Video to Text Summarization:
+
 The VideoSynopsi_ takes an youtube video link (URL) as input and returns a summary of that Video.
 
-# VideoSynopsi_ (Video to Text) API
+## VideoSynopsi_ (Video to Text) API
 
 This API allows you to extract text data from a video using a provided API key and URL. It's designed to provide video-to-text summarization capabilities.
 
@@ -41,7 +42,7 @@ This API allows you to extract text data from a video using a provided API key a
 - `api_key` (string, required): An API key for authentication. Use `api123` for testing purposes.
 - `url` (string, required): The URL of the video you want to process.
 
-# Usage:
+## Usage:
     1. Run the Flask app:
         python app.py
 
@@ -73,6 +74,8 @@ This API allows you to extract text data from a video using a provided API key a
     "url": "https://www.youtube.com/watch?v=ankpGxGh8cA",
     "views": 334
 }
+
+```
 
 ## Status Codes:
 
