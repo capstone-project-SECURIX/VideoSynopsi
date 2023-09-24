@@ -58,21 +58,24 @@ This API allows you to extract text data from a video using a provided API key a
 ## Response
 
 - If the API key is valid and the URL is accessible, the API will respond with a JSON object containing the following information:
-  - `api_key` (string): The API key used for authentication.
-  - `url` (string): The URL of the video that was processed.
   - `title` (string): The title of the video.
-  - `summarized_text` (string): A summarized text extracted from the video content.
+  - `url` (string): The URL of the video that was processed.
+  - `author` (string): The author of the video.
+  - `views` (integer): The view count of the video.
+  - `length` (integer): The length of the video in seconds.
+  - `raw_text` (string): A Raw text extracted from the video content.
+  - `summarized_text` (string): A summarized text extracted from the raw_text.
 
 ## Example Response:
 ```json
 {
-    "Raw_text": "hello this time we got pronunciation yes let's pronounce these words together we got three sounds to pronounce the letter S at the end of the plural nouns now let's listen to them and repeat the words tape script 1.14 pronunciation books students cause computers hamburgers Cambridge televisions bags phones some images houses buses wait for more units more lessons for the beginners English level and more levels coming soon thank you ",
-    "author": "TEFLship",
-    "length": 72,
-    "summarized_text": "14 pronunciation books students cause computers hamburgers Cambridge televisions bags phones some images houses buses wait for more units more lessons for the beginners English level an an English for adults level 1 and 2. 1. Pronunciation books: 1. The sound of the letter S at the end of the plural nouns now let's listen to them and repeat the words. 2. The sounds of the letters A, E, and F at the beginning of the nouns.\nMore levels coming soon thank you. d more levels comingSoon.    d more level coming soon. Thank you for your support and support.  D more levels  coming soon thanks for support. d  more levelsComing soon.  More levels coming Soon.",
     "title": "Unit 1- Lesson 7 - How To Pronounce the S in Plural Nouns - Pronunciation - Beginners Level",
     "url": "https://www.youtube.com/watch?v=ankpGxGh8cA",
-    "views": 334
+    "author": "TEFLship",
+    "views": 334,
+    "length": 72,
+    "Raw_text": "hello this time we got pronunciation yes let's pronounce these words together we got three sounds to pronounce the letter S at the end of the plural nouns now let's listen to them and repeat the words tape script 1.14 pronunciation books students cause computers hamburgers Cambridge televisions bags phones some images houses buses wait for more units more lessons for the beginners English level and more levels coming soon thank you ",
+    "summarized_text": "14 pronunciation books students cause computers hamburgers Cambridge televisions bags phones some images houses buses wait for more units more lessons for the beginners English level an an English for adults level 1 and 2. 1. Pronunciation books: 1. The sound of the letter S at the end of the plural nouns now let's listen to them and repeat the words. 2. The sounds of the letters A, E, and F at the beginning of the nouns.\nMore levels coming soon thank you. d more levels comingSoon.    d more level coming soon. Thank you for your support and support.  D more levels  coming soon thanks for support. d  more levelsComing soon.  More levels coming Soon.",
 }
 
 ```
