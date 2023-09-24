@@ -56,6 +56,10 @@ This API allows you to extract text data from a video using a provided API key a
 
     3. The API will return the summarized text and other relevant information.
 
+## Google Colab
+
+`https://colab.research.google.com/drive/1_aTfavawuo8sE8waewwT-18BvTmel-Dc#scrollTo=SIB_bYdhF_qK`
+
 ## Example Request:
 
 - GET /apiVideo2Text?api_key=api123&url=https://www.youtube.com/watch?v=ankpGxGh8cA

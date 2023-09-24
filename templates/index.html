@@ -11,6 +11,9 @@
         .hidden-text {
             display: none;
         }
+        .apihidden-text {
+            display: none;
+        }
     </style>
 </head>
 <body class="h-56 mx-20 font-mono">
@@ -84,6 +87,74 @@
                 </div>
             {% endif %}
 
+            <!-- Button to show/hide text -->
+            <button id="apitoggleButton" class="p-2 border rounded hover:shadow-lg">GET Api</button>
+
+            <!-- Text to be shown/hidden -->
+            <div class="apihidden-text mt-10">
+                <p class="my-4 mt-10 text-center text-2xl"><strong>API:</strong></p>
+                <div class="container mt-4">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="bg-gray-200 p-4 rounded">
+                                <h2 class="font-bold">API Endpoint</h2>
+                                <hr>
+                                <h4>Endpoint: </h4>
+                                <h4>Method: GET</h4>
+                
+                                <h2 class="mt-4 font-bold">Request Parameters</h2>
+                                <hr>
+                                <h4><span class="badge badge-warning">Required</span> api_key (string):</h4>
+                                <p>-- An API key for authentication. Use <code>api123</code> for testing purposes.</p>
+                                <h4><span class="badge badge-warning">Required</span> url (string):</h4>
+                                <p>-- The URL of the video you want to process.</p>
+                
+                                <h2 class="mt-4 font-bold">Example Request</h2>
+                                <hr>
+                                <p>GET /apiVideo2Text?api_key=api123&url=https://www.youtube.com/watch?v=ankpGxGh8cA</p>
+                
+                                <h2 class="mt-4 font-bold">Response</h2>
+                                <hr>
+                                <h4>JSON Object:</h4>
+                                <p>
+                {
+                    <br>
+                    "title": "Unit 1- Lesson 7 - How To Pronounce the S in Plural Nouns - Pronunciation - Beginners Level",
+                    <br>
+                    "url": "https://www.youtube.com/watch?v=ankpGxGh8cA",
+                    <br>
+                    "author": "TEFLship",
+                    <br>
+                    "views": 334,
+                    <br>
+                    "length": 72,
+                    <br>
+                    <br>
+                
+                    "Raw_text": "hello this time we got pronunciation yes let's pronounce these words together we got three sounds to pronounce the letter S 
+                    at the end of the plural nouns now let's listen to them and repeat the words tape script 1.14 pronunciation books students cause computers
+                    hamburgers Cambridge televisions bags phones some images houses buses wait for more units more lessons for the beginners English level and
+                    more levels coming soon thank you ",
+
+                    <br>
+                    <br>
+
+                
+                    "summarized_text": "14 pronunciation books students cause computers hamburgers Cambridge televisions bags phones some images houses buses wait for 
+                    more units more lessons for the beginners English level an an English for adults level 1 and 2. 1. Pronunciation books: 1. The sound of the 
+                    letter S at the end of the plural nouns now let's listen to them and repeat the words. 2. The sounds of the letters A, E, and F at the beginning 
+                    of the nouns.\nMore levels coming soon thank you. d more levels comingSoon.    d more level coming soon. Thank you for your support and support.  
+                    D more levels  coming soon thanks for support. d  more levelsComing soon.  More levels coming Soon."
+                    <br>
+                }
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
             
             <h1 class="text-center text-2xl my-10">Word Cloud</h1>
             
@@ -92,18 +163,15 @@
             </div>
 
             <!-- Footer -->
-            <div class=" my-10 p-4 border flex justify-end">
-                
+            <div class=" my-10 p-4 flex justify-end">
+
                 <a href="https://github.com/capstone-project-SECURIX/VideoSynopsi_" 
-                    class="ml-4 p-2 rounded border hover:shadow-lg"><i class="fa-brands fa-github mr-2"></i>GITHUB</a>
+                    class="ml-4 p-2 rounded border hover:shadow-lg" target="_blank"><i class="fa-brands fa-github mr-2"></i>GITHUB</a>
 
                 <a href="https://colab.research.google.com/drive/1_aTfavawuo8sE8waewwT-18BvTmel-Dc?usp=sharing" 
-                    class="ml-4 p-2 rounded border hover:shadow-lg"><i class="fa-solid fa-code mr-2"></i>Google Colab</a>
+                    class="ml-4 p-2 rounded border hover:shadow-lg" target="_blank"><i class="fa-solid fa-code mr-2"></i>Google Colab</a>
 
-                <a href="#" 
-                    class="ml-4 p-2 rounded border hover:shadow-lg">Get Api</a>
-
-            </div>
+                </div>
 
             <!-- Developers -->
             <div class="p-2 my-2">
@@ -166,6 +234,18 @@
                 hiddenText.style.display = 'block'; // Show the text
             } else {
                 hiddenText.style.display = 'none'; // Hide the text
+            }
+        });
+
+        // Button to show/hide text 
+        const apitoggleButton = document.getElementById('apitoggleButton');
+        const apihiddenText = document.querySelector('.apihidden-text');
+
+        apitoggleButton.addEventListener('click', () => {
+            if (apihiddenText.style.display === 'none' || apihiddenText.style.display === '') {
+                apihiddenText.style.display = 'block'; // Show the text
+            } else {
+                apihiddenText.style.display = 'none'; // Hide the text
             }
         });
     </script>
