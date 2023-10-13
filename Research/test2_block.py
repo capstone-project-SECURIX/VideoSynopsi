@@ -1,10 +1,17 @@
+from dotenv import load_dotenv
+load_dotenv()
+import os
+HFreadAPIkey = os.getenv("HUGGINGFACE_READ_API")
+
+
+
 import requests
 
 
 def summarizeText(text):
 
     API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-cnn"
-    headers = {"Authorization": "Bearer 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"}
+    headers = {"Authorization": HFreadAPIkey}
 
     def query(payload):
         response = requests.post(API_URL, headers=headers, json=payload)
