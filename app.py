@@ -13,6 +13,12 @@ import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 
 
+from dotenv import load_dotenv
+load_dotenv() # Load environment variables from the .env file
+HFreadAPIkey = os.getenv("HUGGINGFACE_READ_API")
+
+
+
 
 app = Flask(__name__)
 
@@ -92,10 +98,10 @@ def dummy():
 
     video_info = {
 
-        "title": "IOT intro by Atharva Pawar",
-        "author": "Atharva Pawar",
-        "length": "2321",
-        "views": "10120282",
+        "title": "The Ultimate Guide to Effective Communication",
+        "author": "Woice with warikoo",
+        "length": "177",
+        "views": "84900",
 
         "largeText": largeText,
         "summarize": summarize,
@@ -141,7 +147,8 @@ def largetext_2_summarize(largeText):
 def summarizeText(text):
 
     API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-cnn"
-    headers = {"Authorization": "Bearer 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"}
+    # headers = {"Authorization": "Bearer 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"}
+    headers = {"Authorization": HFreadAPIkey}
 
     def query(payload):
         response = requests.post(API_URL, headers=headers, json=payload)
